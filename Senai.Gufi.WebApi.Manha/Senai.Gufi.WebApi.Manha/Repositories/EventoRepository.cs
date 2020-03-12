@@ -29,22 +29,24 @@ namespace Senai.Gufi.WebApi.Manha.Repositories
 
         public Evento BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            return ctx.Evento.FirstOrDefault(e => e.IdEvento == id);
         }
 
         public void Cadastrar(Evento novoEvento)
         {
-            throw new NotImplementedException();
+            ctx.Evento.Add(novoEvento);
+            ctx.SaveChanges();
         }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            ctx.Evento.Remove(BuscarPorId(id));
+            ctx.SaveChanges();
         }
 
         public List<Evento> Listar()
         {
-            throw new NotImplementedException();
+            return ctx.Evento.ToList();
         }
     }
 }

@@ -34,6 +34,12 @@ namespace Senai.Gufi.WebApi.Manha.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
+            TipoEvento eventoBuscado = _tipoEventoRepository.BuscarPorId(id);
+
+            if (eventoBuscado == null)
+            {
+                return NotFound("Usuário não Encontrado!");
+            }
             return Ok(_tipoEventoRepository.BuscarPorId(id));
         }
 
@@ -45,7 +51,7 @@ namespace Senai.Gufi.WebApi.Manha.Controllers
             return StatusCode(201);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, TipoEvento tipoEventoAtualizado)
         {
 

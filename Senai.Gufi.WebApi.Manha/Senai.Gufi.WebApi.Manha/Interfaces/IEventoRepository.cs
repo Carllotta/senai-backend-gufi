@@ -17,5 +17,6 @@ namespace Senai.Gufi.WebApi.Manha.Interfaces
         void Cadastrar(Evento novoEvento);
 
         Evento BuscarPorId(int id);
+             
     }
 }

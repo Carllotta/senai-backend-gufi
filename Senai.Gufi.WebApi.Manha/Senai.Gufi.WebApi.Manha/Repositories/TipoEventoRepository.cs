@@ -17,7 +17,7 @@ namespace Senai.Gufi.WebApi.Manha.Repositories
 
             tipoEventoBuscado.TituloTipoEvento = tipoEventoAtualizado.TituloTipoEvento;
 
-            ctx.TipoEvento.Update(tipoEventoAtualizado);
+            ctx.TipoEvento.Update(tipoEventoBuscado);
 
             ctx.SaveChanges();
         }
