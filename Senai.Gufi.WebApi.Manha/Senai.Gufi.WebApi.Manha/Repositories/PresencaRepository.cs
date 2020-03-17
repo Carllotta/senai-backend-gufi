@@ -15,13 +15,18 @@ namespace Senai.Gufi.WebApi.Manha.Repositories
         {
             Presenca presencaBuscada = ctx.Presenca.FirstOrDefault(p => p.IdPresenca == id);
 
-           
-            presencaBuscada.Situacao = PresencaAtualizada.Situacao;
-            presencaBuscada.FkUsuario = PresencaAtualizada.FkUsuario;
-            presencaBuscada.FkEvento = PresencaAtualizada.FkEvento;
+            Evento presencaEvento = ctx.Evento.FirstOrDefault(e => e.IdEvento == PresencaAtualizada.FkEvento);
 
-            ctx.Presenca.Update(presencaBuscada);
-            ctx.SaveChanges();
+            if (presencaEvento.DataEvento > DateTime.Now)
+            {
+                presencaBuscada.Situacao = PresencaAtualizada.Situacao;
+                presencaBuscada.FkUsuario = PresencaAtualizada.FkUsuario;
+                presencaBuscada.FkEvento = PresencaAtualizada.FkEvento;
+
+                ctx.Presenca.Update(presencaBuscada);
+                ctx.SaveChanges();
+            }
+                        
         }
 
         public Presenca BuscarPorId(int id)

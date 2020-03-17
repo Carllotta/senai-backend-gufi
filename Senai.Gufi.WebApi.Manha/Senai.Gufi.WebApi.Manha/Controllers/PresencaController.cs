@@ -46,6 +46,7 @@ namespace Senai.Gufi.WebApi.Manha.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Presenca presencaAtualizada)
         {
+
             Presenca presencaBuscada = _presencaRepository.BuscarPorId(id);
 
             if (presencaBuscada == null)

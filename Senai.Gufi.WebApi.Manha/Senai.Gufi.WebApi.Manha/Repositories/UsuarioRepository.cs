@@ -42,6 +42,8 @@ namespace Senai.Gufi.WebApi.Manha.Repositories
 
         public void Cadastrar(Usuario novoUsuario)
         {
+            novoUsuario.DataCadastro = DateTime.Now;
+
             ctx.Usuario.Add(novoUsuario);
             ctx.SaveChanges();
         }
